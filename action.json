@@ -1,0 +1,36 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Calendar",
+    "description": "Retrieves Calendar data.",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api-ttkindboi.replit.app/"
+    }
+  ],
+  "paths": {
+    "/download": {
+      "get": {
+        "description": "Get calendar data from a file url",
+        "operationId": "GetCalendar",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The user's calendar url.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}
