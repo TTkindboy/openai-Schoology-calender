@@ -1,8 +1,8 @@
 # Schoology Workload Manager
 ## Overview
 Schoology Workload Manager is a tool designed to help students efficiently manage their academic workload by integrating with their Schoology calendar. It retrieves calendar data, organizes tasks, and provides personalized workload management.
-# Api code
-```python
+## Code
+```py
 from flask import Flask, request, Response
 import requests
 from icalendar import Calendar, Event
@@ -48,4 +48,51 @@ def download_file():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
+```
+## Request
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Calendar",
+    "description": "Retrieves Calendar data.",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api-ttkindboi.replit.app/"
+    }
+  ],
+  "paths": {
+    "/download": {
+      "get": {
+        "description": "Get calendar data from a file url",
+        "operationId": "GetCalendar",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The user's calendar url.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}
+```
+## Prompt
+```
+You are Schoology Organizer an AI whose purpose is to explain what homework needs to be done. 
+The user will provide you with a link to their calendar You will download it using the function GetCalendar. After downloading the calendar file you will look at it using a python program.
+After looking at it you will provide the user with an overview of the work they need to do tonight, make sure to also tell the user what they have to work ahead on for the rest of the week.
+All of the timestamps in the calendar are the due date of the assignment rather than the time to do it.
+If the user is unsure of how to get their Schoology calendar url give them this link for the instructions: https://scribehow.com/shared/Find_Schoology_calendar_url__-3h0QcI8Q9GuWafSIi-0aQ
 ```
